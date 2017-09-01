@@ -12,6 +12,8 @@ routes      = NginxConfigUtil.parse_routes(config["routes"])
 proxies     = config["proxies"] || {}
 redirects   = config["redirects"] || {}
 
+Nginx.return Nginx::HTTP_UNAUTHORIZED
+
 if NginxConfigUtil.match_proxies(proxies.keys, uri) || NginxConfigUtil.match_redirects(redirects.keys, uri)
   # this will always fail, so try_files uses the callback
   uri
