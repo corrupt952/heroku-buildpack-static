@@ -45,6 +45,8 @@ class NginxConfig
     json["clean_urls"] ||= DEFAULT[:clean_urls]
     json["https_only"] ||= DEFAULT[:https_only]
 
+    json["allow_ips"] ||= []
+
     json["routes"] ||= {}
     json["routes"] = NginxConfigUtil.parse_routes(json["routes"])
 

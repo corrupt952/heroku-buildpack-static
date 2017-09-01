@@ -49,6 +49,12 @@ http {
   <% if proxies.any? %>
     resolver <%= resolver %>;
   <% end %>
+  <% if allow_ips.any? %>
+    <% allow_ips.each do |allow_ip| %>
+    allow <%= allow_ip %>;
+    <% end %>
+    deny all;
+  <% end %>
 
     location / {
       mruby_post_read_handler /app/bin/config/lib/ngx_mruby/headers.rb cache;
